@@ -1,0 +1,73 @@
+/* HabitTrail design system */
+:root {
+  --color-primary: #2F7D5B;
+  --color-primary-dark: #256649;
+  --color-secondary: #F2A93B;
+  --color-secondary-light: #FDF1DC;
+  --color-text: #1F2933;
+  --color-background: #FAFAF7;
+  --font-heading: "Jua", sans-serif;
+  --font-body: "Noto Sans KR", sans-serif;
+  --space-s: 8px;
+  --space-m: 16px;
+  --space-l: 32px;
+  --space-xl: 64px;
+  --radius: 12px;
+}
+
+body {
+  margin: 0;
+  padding: var(--space-m);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  margin: 0 0 var(--space-s);
+}
+
+h1 {
+  color: var(--color-primary);
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Sections: pale amber panels with the same gap between each one */
+main > section {
+  padding: var(--space-l);
+  border-radius: var(--radius);
+  background: var(--color-secondary-light);
+}
+
+main > section + section {
+  margin-top: var(--space-xl);
+}
+
+/* Call-to-action button */
+.button {
+  display: inline-block;
+  padding: var(--space-m) var(--space-l);
+  border-radius: var(--radius);
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--color-primary-dark);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+}

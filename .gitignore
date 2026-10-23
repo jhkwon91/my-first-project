@@ -1,0 +1,6 @@
+# 비밀 키 파일
+.env
+.env.*
+
+# macOS 시스템 파일
+.DS_Store

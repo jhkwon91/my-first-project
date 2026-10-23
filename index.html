@@ -3,10 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello, Builder</title>
+  <title>HabitTrail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <h1>Hello, Again</h1>
-  <p>안녕하세요! 저는 무언가를 직접 만들어 보는 것을 좋아하는 사람 호르입니다. 이 페이지는 제가 처음으로 만든 웹페이지예요. 앞으로 여기에 제 아이디어와 프로젝트를 하나씩 채워 나갈 예정입니다.</p>
+  <header>
+    <a href="index.html">HabitTrail</a>
+    <nav aria-label="주요 메뉴">
+      <ul>
+        <li><a href="index.html" aria-current="page">홈</a></li>
+        <li><a href="support.html">지원</a></li>
+        <li><a href="privacy.html">개인정보 처리방침</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="intro-heading">
+      <h1 id="intro-heading">HabitTrail</h1>
+      <p>HabitTrail은 매일 지키고 싶은 습관을 기록하고, 꾸준히 이어 온 날들을 한눈에 보여 주는 습관 추적 앱입니다.</p>
+      <p><a class="button" href="#download">지금 시작하기</a></p>
+    </section>
+
+    <section aria-labelledby="features-heading">
+      <h2 id="features-heading">주요 기능</h2>
+      <ul>
+        <li>
+          <h3>간편한 습관 체크</h3>
+          <p>오늘 한 습관은 한 번만 눌러 완료로 표시하세요. 몇 초면 하루 기록이 끝납니다.</p>
+        </li>
+        <li>
+          <h3>알림</h3>
+          <p>원하는 시간에 알림을 받아 습관을 잊지 않도록 도와줍니다.</p>
+        </li>
+        <li>
+          <h3>연속 기록</h3>
+          <p>며칠 연속으로 습관을 지켰는지 보여 주어 계속 이어 갈 힘을 줍니다.</p>
+        </li>
+        <li>
+          <h3>한눈에 보는 기록</h3>
+          <p>지난 기록을 달력으로 확인하고, 어떤 습관이 잘 지켜지고 있는지 살펴보세요.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="download" aria-labelledby="download-heading">
+      <h2 id="download-heading">오늘부터 시작하세요</h2>
+      <p>HabitTrail을 내려받고 첫 번째 습관을 추가해 보세요.</p>
+      <ul>
+        <li><a href="#">App Store에서 다운로드</a></li>
+        <li><a href="#">Google Play에서 다운로드</a></li>
+      </ul>
+      <p>궁금한 점이 있으신가요? <a href="support.html">지원 페이지</a>에서 자주 묻는 질문을 확인하세요.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><small>&copy; 2026 HabitTrail. All rights reserved.</small></p>
+  </footer>
 </body>
 </html>
