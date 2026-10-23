@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>지원 | HabitTrail</title>
+  <script src="js/theme.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap">
@@ -11,6 +12,54 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <h1>지원</h1>
+  <header class="site-header">
+    <a class="logo" href="index.html">HabitTrail</a>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle" aria-pressed="false">다크 모드</button>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-menu">메뉴</button>
+    </div>
+    <nav id="site-menu" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="support.html" aria-current="page">지원</a></li>
+        <li><a href="privacy.html">개인정보 처리방침</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="intro-heading">
+      <h1 id="intro-heading">지원</h1>
+      <p>HabitTrail을 쓰다가 궁금한 점이 생기셨나요? 많은 분이 자주 묻는 질문과 답을 모았습니다.</p>
+    </section>
+
+    <section aria-labelledby="faq-heading">
+      <h2 id="faq-heading">자주 묻는 질문</h2>
+
+      <details class="faq-item">
+        <summary>습관 알림은 어떻게 설정하나요?</summary>
+        <p>알림을 받고 싶은 습관을 누른 뒤 <strong>알림</strong>을 켜고 원하는 시간을 고르세요. 알림이 오지 않는다면 휴대폰 설정에서 HabitTrail의 알림이 허용되어 있는지 확인해 주세요.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>연속 기록을 처음부터 다시 시작할 수 있나요?</summary>
+        <p>네. 습관을 누른 뒤 <strong>연속 기록 초기화</strong>를 선택하면 0일부터 다시 시작합니다. 초기화해도 지난 기록은 달력에 그대로 남아 있습니다.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>습관을 수정하거나 삭제하려면 어떻게 하나요?</summary>
+        <p>습관을 길게 누르면 이름과 알림 시간을 바꾸거나 습관을 삭제할 수 있습니다. 삭제한 습관의 기록은 되살릴 수 없으니 주의해 주세요.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>여기서 답을 찾지 못했어요.</summary>
+        <p><a href="mailto:support@habittrail.example">support@habittrail.example</a>로 메일을 보내 주세요. 사용 중인 휴대폰 기종과 겪고 있는 문제를 함께 적어 주시면 더 빨리 도와드릴 수 있습니다.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p><small>&copy; 2026 HabitTrail. All rights reserved.</small></p>
+  </footer>
 </body>
 </html>

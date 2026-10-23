@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>개인정보 처리방침 | HabitTrail</title>
+  <script src="js/theme.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap">
@@ -11,6 +12,62 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <h1>개인정보 처리방침</h1>
+  <header class="site-header">
+    <a class="logo" href="index.html">HabitTrail</a>
+    <div class="header-actions">
+      <button type="button" class="theme-toggle" aria-pressed="false">다크 모드</button>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-menu">메뉴</button>
+    </div>
+    <nav id="site-menu" aria-label="주요 메뉴">
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li><a href="support.html">지원</a></li>
+        <li><a href="privacy.html" aria-current="page">개인정보 처리방침</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="intro-heading">
+      <h1 id="intro-heading">개인정보 처리방침</h1>
+      <p>HabitTrail이 어떤 정보를 모으고, 왜 모으며, 원하실 때 어떻게 지울 수 있는지 쉬운 말로 설명합니다.</p>
+      <p>최종 수정일: <time datetime="2026-10-23">2026년 10월 23일</time></p>
+    </section>
+
+    <section aria-labelledby="collect-heading">
+      <h2 id="collect-heading">수집하는 정보</h2>
+      <ul>
+        <li><strong>계정 정보:</strong> 가입할 때 입력한 이메일 주소</li>
+        <li><strong>습관 기록:</strong> 직접 만든 습관의 이름, 완료한 날짜, 연속 기록</li>
+        <li><strong>알림 설정:</strong> 알림을 받기로 한 습관과 시간</li>
+        <li><strong>오류 정보:</strong> 앱이 멈추거나 오류가 났을 때의 기기 종류와 앱 버전</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="why-heading">
+      <h2 id="why-heading">수집하는 이유</h2>
+      <ul>
+        <li><strong>계정 정보</strong>는 로그인하고, 휴대폰을 바꿔도 기록을 이어서 볼 수 있게 하는 데 씁니다.</li>
+        <li><strong>습관 기록</strong>은 달력과 연속 기록을 보여 주는 데 씁니다.</li>
+        <li><strong>알림 설정</strong>은 정해 둔 시간에 알림을 보내는 데 씁니다.</li>
+        <li><strong>오류 정보</strong>는 문제를 찾아 고치는 데 씁니다.</li>
+      </ul>
+      <p>모은 정보는 위의 목적으로만 사용합니다.</p>
+    </section>
+
+    <section aria-labelledby="delete-heading">
+      <h2 id="delete-heading">정보 삭제 요청 방법</h2>
+      <p>언제든지 내 정보를 모두 지울 수 있습니다. 두 가지 방법 중 편한 쪽을 고르세요.</p>
+      <ol>
+        <li><strong>앱에서 직접 삭제:</strong> <strong>설정 &gt; 계정 &gt; 계정 삭제</strong>를 누르세요.</li>
+        <li><strong>메일로 요청:</strong> 가입한 이메일 주소로 <a href="mailto:privacy@habittrail.example">privacy@habittrail.example</a>에 "정보 삭제 요청"이라고 보내 주세요.</li>
+      </ol>
+      <p>계정을 삭제하면 계정 정보와 모든 습관 기록이 지워지며, 지운 정보는 되살릴 수 없습니다.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><small>&copy; 2026 HabitTrail. All rights reserved.</small></p>
+  </footer>
 </body>
 </html>

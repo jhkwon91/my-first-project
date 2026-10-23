@@ -1,11 +1,17 @@
 /* HabitTrail design system */
 :root {
+  color-scheme: light;
   --color-primary: #2F7D5B;
   --color-primary-dark: #256649;
   --color-secondary: #F2A93B;
   --color-secondary-light: #FDF1DC;
   --color-text: #1F2933;
   --color-background: #FAFAF7;
+  --color-surface: #FFFFFF;
+  --color-heading: #2F7D5B;
+  --color-link: #256649;
+  --color-focus: #2F7D5B;
+  --color-icon-bg: #FDF1DC;
   --font-heading: "Jua", sans-serif;
   --font-body: "Noto Sans KR", sans-serif;
   --space-s: 8px;
@@ -13,6 +19,32 @@
   --space-l: 32px;
   --space-xl: 64px;
   --radius: 12px;
+}
+
+/* Dark theme: used when the visitor picks it, or when their device is set to
+   dark and they haven't picked light. Every pair here passes WCAG AA contrast. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-text: #E6E8EB;
+    --color-background: #14191F;
+    --color-secondary-light: #262119;
+    --color-surface: #1D232A;
+    --color-heading: #7DD3A8;
+    --color-link: #7DD3A8;
+    --color-focus: #7DD3A8;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-text: #E6E8EB;
+  --color-background: #14191F;
+  --color-secondary-light: #262119;
+  --color-surface: #1D232A;
+  --color-heading: #7DD3A8;
+  --color-link: #7DD3A8;
+  --color-focus: #7DD3A8;
 }
 
 body {
@@ -27,6 +59,10 @@ body {
   overflow-wrap: break-word;
 }
 
+a {
+  color: var(--color-link);
+}
+
 h1,
 h2,
 h3 {
@@ -36,12 +72,133 @@ h3 {
 }
 
 h1 {
-  color: var(--color-primary);
+  color: var(--color-heading);
 }
 
 main {
   max-width: 960px;
   margin: 0 auto;
+}
+
+/* Site header. Wide screens: logo, menu, theme button in one row.
+   Narrow screens: logo and buttons on top, menu opens below via the menu button. */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-s) var(--space-m);
+  max-width: 960px;
+  margin: 0 auto var(--space-m);
+}
+
+.logo {
+  margin-right: auto;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-heading);
+  text-decoration: none;
+}
+
+.header-actions {
+  display: flex;
+  gap: var(--space-s);
+}
+
+.header-actions button {
+  min-height: 44px;
+  padding: 0 var(--space-m);
+  border: 2px solid var(--color-heading);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.header-actions button[aria-pressed="true"],
+.header-actions button[aria-expanded="true"] {
+  background: var(--color-heading);
+  color: var(--color-background);
+  font-weight: 700;
+}
+
+/* The buttons need JavaScript, so they only appear once js/theme.js has run.
+   Without it, the menu simply stays open. */
+.theme-toggle,
+.menu-toggle {
+  display: none;
+}
+
+.js .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+}
+
+nav {
+  flex-basis: 100%;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 599px) {
+  .js .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .js .site-header:not(.menu-open) nav {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  nav {
+    flex-basis: auto;
+  }
+
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .header-actions {
+    order: 1;
+  }
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-m);
+  border-radius: var(--radius);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+nav a:hover {
+  background: var(--color-secondary-light);
+}
+
+/* Active state: the page the visitor is on */
+nav a[aria-current="page"] {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 /* Sections: pale amber panels with the same gap between each one.
@@ -83,8 +240,9 @@ main > .hero {
   text-wrap: balance;
 }
 
-/* Features: 1 column (narrow), 2 columns (medium), 3 columns (wide) */
-.features {
+/* Card grids (features, testimonials): 1 column (narrow), 2 (medium), 3 (wide) */
+.features,
+.testimonials {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-m);
@@ -106,25 +264,88 @@ main > .hero {
     padding-block: var(--space-xl);
   }
 
-  .features {
+  .features,
+  .testimonials {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 900px) {
-  .features {
+  .features,
+  .testimonials {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.features li {
+.features li,
+.testimonials li {
   padding: var(--space-m);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--color-surface);
 }
 
 .features p {
   margin: 0;
+}
+
+/* Images scale down to fit their container on any screen */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Feature icons (Lucide, ISC license: see images/icons/LICENSE.txt).
+   Sized in rem so they grow with the visitor's text size setting. */
+.feature-icon {
+  display: block;
+  box-sizing: content-box;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.75rem;
+  margin-bottom: var(--space-s);
+  border-radius: 50%;
+  /* Stays light in dark mode so the green icon strokes remain visible */
+  background: var(--color-icon-bg);
+}
+
+/* Small print, e.g. the "these are examples" notice */
+.note {
+  font-size: 0.875rem;
+}
+
+/* Testimonials */
+.testimonials figure,
+.testimonials blockquote {
+  margin: 0;
+}
+
+.testimonials blockquote p {
+  margin: 0 0 var(--space-s);
+}
+
+.testimonials figcaption {
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+/* Download panel: centered text with the two store buttons side by side */
+.download {
+  text-align: center;
+}
+
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-m);
+  margin: var(--space-m) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.store-links small {
+  display: block;
+  font-weight: 400;
 }
 
 /* Call-to-action button */
@@ -142,7 +363,45 @@ main > .hero {
   background: var(--color-primary-dark);
 }
 
-.button:focus-visible {
-  outline: 3px solid var(--color-secondary);
-  outline-offset: 3px;
+/* FAQ: each question opens and closes its answer (closed by default) */
+.faq-item {
+  margin-top: var(--space-s);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-s) var(--space-m);
+  border-radius: var(--radius);
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::before {
+  content: "+";
+  flex: none;
+  width: 1.5em;
+  color: var(--color-heading);
+  font-size: 1.25rem;
+}
+
+.faq-item[open] summary::before {
+  content: "−";
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 var(--space-m) var(--space-m) calc(var(--space-m) + 1.875rem);
+}
+
+.faq-item + p {
+  margin-top: var(--space-m);
 }

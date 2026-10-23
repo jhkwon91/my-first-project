@@ -13,13 +13,17 @@ index.html      Home: what HabitTrail is, main features, a clear next step
 support.html    Support: answers to common new-user questions
 privacy.html    Privacy: what data is collected, why, how to request deletion
 css/style.css   One shared stylesheet for all pages (design tokens + base styles)
-js/main.js      One shared script for all pages (empty for now)
+js/theme.js     Loaded first in <head>: adds the `js` class and applies the saved theme
+js/main.js      Theme toggle and narrow-screen menu button (deferred)
 notes/          The user's own notes (empty)
 ```
 
-- Every page links `css/style.css` and loads `js/main.js` with `defer` in `<head>`. Keep this the same on all three pages.
-- Planned links: Home links to Support and Privacy, and Support and Privacy each link back to Home. They don't exist yet.
-- Put images in an `images/` folder when they're needed.
+- Every page's `<head>` loads `js/theme.js` right after `<title>` (no `defer`, so there's no flash of the wrong theme), then the fonts, `css/style.css`, and `js/main.js` with `defer`. Keep this the same on all three pages.
+- Every page has the same `<header class="site-header">` (logo link, a theme toggle and a menu button in `.header-actions`, and `<nav id="site-menu">`) and `<footer>`. The buttons only show when the `js` class is present. Without JavaScript the menu just stays open.
+- The theme choice is saved in `localStorage` under `theme` (`light`/`dark`). With no saved choice, the site follows the device setting. Dark-mode colors are tokens in `style.css`, so use the tokens rather than raw colors.
+- FAQs (home and support) use `<details class="faq-item">` with a `<summary>` question, closed by default.
+- Keep the header markup identical on all pages. The only difference is that `aria-current="page"` goes on the current page's menu link, and the active-state style comes from that attribute.
+- Images live in `images/`. `images/icons/` holds Lucide icons (lucide-static 1.53.0, ISC license) with their stroke recolored to Trail Green. Keep `images/icons/LICENSE.txt` next to them. Add an image only from a source whose license allows commercial use, and note the source and license here.
 
 ## Commands
 
