@@ -22,6 +22,9 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background: var(--color-background);
+  /* Break Korean lines between words, not in the middle of one */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 h1,
@@ -41,15 +44,87 @@ main {
   margin: 0 auto;
 }
 
-/* Sections: pale amber panels with the same gap between each one */
+/* Sections: pale amber panels with the same gap between each one.
+   Narrow screens get tighter spacing; wider screens get more room. */
 main > section {
-  padding: var(--space-l);
+  padding: var(--space-m);
   border-radius: var(--radius);
   background: var(--color-secondary-light);
 }
 
 main > section + section {
-  margin-top: var(--space-xl);
+  margin-top: var(--space-l);
+}
+
+/* Hero: title, description, and button stacked and centered */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-m);
+  text-align: center;
+}
+
+main > .hero {
+  padding-block: var(--space-l);
+}
+
+.hero > * {
+  margin: 0;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  line-height: 1.2;
+}
+
+.hero p {
+  max-width: 36em;
+  text-wrap: balance;
+}
+
+/* Features: 1 column (narrow), 2 columns (medium), 3 columns (wide) */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-m);
+  margin: var(--space-m) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 600px) {
+  main > section {
+    padding: var(--space-l);
+  }
+
+  main > section + section {
+    margin-top: var(--space-xl);
+  }
+
+  main > .hero {
+    padding-block: var(--space-xl);
+  }
+
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.features li {
+  padding: var(--space-m);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.features p {
+  margin: 0;
 }
 
 /* Call-to-action button */
